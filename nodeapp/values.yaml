@@ -1,16 +1,20 @@
-# Default values for helm.
+# Default values for nodeapp.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: emanny0018/manager
+  repository: emanny/node-app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
+  #tag: "{{ .Values.env.APP_VERSION }}"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+env:
+  APP_VERSION: 5ddacfc4c3af2244cc4b57216320402f128e17a9
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -26,8 +30,6 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
-env:
-  APP_VERSION: e9d7c476db350ea6cf28ef810159fae827c4ee8c
 podSecurityContext: {}
   # fsGroup: 2000
 
